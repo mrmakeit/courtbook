@@ -10,8 +10,8 @@ export default (sequelize, DataTypes) => {
     }, {
         classMethods: {
             associate: function (models) {
-                Person.hasMany(models.Notification, {
-                    as: "notifications"
+                Person.hasMany(models.Reminder, {
+                    as: "reminders"
                 });
             }
         }

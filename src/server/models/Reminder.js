@@ -1,5 +1,5 @@
 export default (sequelize, DataTypes) => {
-    const Notification = sequelize.define("Notification", {
+    const Reminder = sequelize.define("Reminder", {
         id: {
             type: DataTypes.BIGINT,
             primaryKey: true,
@@ -9,10 +9,10 @@ export default (sequelize, DataTypes) => {
     }, {
         classMethods: {
             associate: function (models) {
-                Notification.belongsTo(models.Person, {as: "person"});
+                Reminder.belongsTo(models.Person, {as: "person"});
             }
         }
     });
 
-    return Notification;
+    return Reminder;
 };

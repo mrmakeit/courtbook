@@ -1,11 +1,11 @@
 module.exports = {
     up: function (queryInterface, Sequelize) {
         return createPerson(queryInterface, Sequelize)
-            .then(createPersonNotification(queryInterface, Sequelize));
+            .then(createPersonReminder(queryInterface, Sequelize));
     },
 
     down: function (queryInterface) {
-        queryInterface.dropTable("Notifications");
+        queryInterface.dropTable("Reminders");
         queryInterface.dropTable("People");
     }
 };
@@ -29,8 +29,8 @@ function createPerson(queryInterface, Sequelize) {
     });
 }
 
-function createPersonNotification(queryInterface, Sequelize) {
-    return () => queryInterface.createTable("Notifications", {
+function createPersonReminder(queryInterface, Sequelize) {
+    return () => queryInterface.createTable("Reminders", {
         id: {
             type: Sequelize.BIGINT,
             allowNull: false,
