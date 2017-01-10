@@ -1,28 +1,28 @@
-import models from "../../../src/server/models/index";
+import models from "../../../src/server/models/models";
 
 describe("Person", function () {
     it("should save person", function () {
         const person = {
             name: chance.name(),
             phoneNumber: chance.phone(),
-            notifications: [
+            reminders: [
                 {date: new Date()}
             ]
         };
 
         return models.Person.create(person, {
             include: [
-                {model: models.Notification, as: "notifications"}
+                {model: models.Reminder, as: "reminders"}
             ]
         }).then((actual) => {
             expect(actual.id).to.exist();
             expect(actual.name).to.equal(person.name);
             expect(actual.phoneNumber).to.equal(person.phoneNumber);
-            expect(actual.notifications).to.exist();
-            expect(actual.notifications).to.have.length(1);
-            const actualNotification = actual.notifications[0];
-            expect(actualNotification.date + "").to.equal(person.notifications[0].date + "");
-            expect(actualNotification.PersonId).to.eql(actual.id);
+            expect(actual.reminders).to.exist();
+            expect(actual.reminders).to.have.length(1);
+            const actualReminder = actual.reminders[0];
+            expect(actualReminder.date + "").to.equal(person.reminders[0].date + "");
+            expect(actualReminder.PersonId).to.eql(actual.id);
         });
     });
 });
