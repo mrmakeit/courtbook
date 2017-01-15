@@ -7,12 +7,11 @@ export const REMINDER_FORM_NAME = "reminders";
 export const CREATE_REMINDER = "CREATE_REMINDER";
 
     export const createReminders = (personReminders) => {
-    console.info("!");
     return {
         type: "CREATE_REMINDER",
         payload: agent
             .post("rest/v1/reminders", personReminders)
             .set("Authorization", `Bearer ${AuthService.getToken()}`)
-            .then()
+            .then(response=>Promise.resolve(response.body))
     };
 };
