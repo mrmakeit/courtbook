@@ -1,3 +1,5 @@
+import models from './models/models';
+
 const cases = {
     FAKE1: {
         defendants: [
@@ -39,6 +41,14 @@ const cases = {
             ]
         }
     }
+};
+
+export const createPersonAndReminders = (personAndReminders) => {
+    // TODO: Valid person and case don't already exist
+    // TODO: Validate id not passed in
+    return models.Person.create(personAndReminders, {
+        include: [{model: models.Reminder, as: "reminders"}]
+    });
 };
 
 export const getPeopleByCaseNumber = (caseNumber) => {
