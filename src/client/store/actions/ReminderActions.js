@@ -4,15 +4,15 @@ import superagentAsPromised from "superagent-as-promised";
 superagentAsPromised(agent, Promise);
 
 export const REMINDER_FORM_NAME = "reminders";
+export const CREATE_REMINDER = "CREATE_REMINDER";
 
-export const createPerson = (person) => {
-    return agent.post("/v1/person", person).set("Authorization", `Bearer ${AuthService.getToken()}`);
-};
-
-export const createReminders = (personReminders, dispatch) => {
-    console.info("creating reminders", personReminders);
-    dispatch({
+    export const createReminders = (personReminders) => {
+    console.info("!");
+    return {
         type: "CREATE_REMINDER",
-        payload: personReminders
-    });
+        payload: agent
+            .post("rest/v1/reminders", personReminders)
+            .set("Authorization", `Bearer ${AuthService.getToken()}`)
+            .then()
+    };
 };

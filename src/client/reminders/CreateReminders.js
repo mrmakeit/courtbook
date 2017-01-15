@@ -19,7 +19,6 @@ const CreateReminders = ({handleSubmit}) => (
     </div>
 );
 
-export default connect(undefined, undefined)(reduxForm({
-    form: REMINDER_FORM_NAME,
-    onSubmit: createReminders
+export default connect(undefined, {onSubmit: createReminders})(reduxForm({
+    form: REMINDER_FORM_NAME
 })(CreateReminders));
