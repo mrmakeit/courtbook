@@ -5,8 +5,9 @@ export default (sequelize, DataTypes) => {
             primaryKey: true,
             autoIncrement: true
         },
-        name: DataTypes.STRING,
-        phoneNumber: DataTypes.STRING
+        name: DataTypes.TEXT,
+        phoneNumber: DataTypes.TEXT,
+        caseNumber: DataTypes.TEXT
     }, {
         classMethods: {
             associate: function (models) {

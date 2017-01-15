@@ -25,6 +25,10 @@ function createPerson(queryInterface, Sequelize) {
         phoneNumber: {
             type: Sequelize.STRING,
             allowNull: false
+        },
+        caseNumber: {
+            type: Sequelize.STRING,
+            allowNull: false
         }
     });
 }
